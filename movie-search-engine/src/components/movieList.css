@@ -1,0 +1,28 @@
+.movie-list {
+  margin-top: 20px;
+}
+
+.movie-item {
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.movie-item img {
+  max-width: 80px;
+  height: auto;
+  margin-right: 20px;
+  border-radius: 5px;
+}
+
+.movie-details {
+  flex: 1;
+}
+
+.movie-title {
+  font-size: 18px;
+  font-weight: bold;
+}

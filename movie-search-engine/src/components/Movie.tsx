@@ -1,6 +1,6 @@
 import React from "react";
 import { MovieDetail } from "../Type/type";
-import "./movie.css";
+import "./movieList.css";
 
 type MovieDetailProps = {
   movieDetail: MovieDetail;
@@ -8,9 +8,9 @@ type MovieDetailProps = {
 
 export const Movie: React.FC<MovieDetailProps> = ({ movieDetail }) => {
   return (
-    <div className="movie-item">
-      <h3>{movieDetail?.title}</h3>
-      <img src={movieDetail?.image} alt={movieDetail?.title} />
-    </div>
+    <>
+      <img className="movie-image" src={movieDetail?.image} alt={movieDetail?.title} />
+      <div className="movie-title">{movieDetail?.title}</div>
+    </>
   );
 };

@@ -49,18 +49,3 @@ button:disabled {
 button:hover {
   background-color: #45a049;
 }
-
-.movie-list {
-  margin-top: 20px;
-  text-align: left;
-}
-
-.movie-item {
-  margin-bottom: 15px;
-}
-
-.movie-item img {
-  max-width: 100px;
-  height: auto;
-  margin-right: 15px;
-}

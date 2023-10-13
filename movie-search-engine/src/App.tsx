@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetQuery } from "./hooks/useFetch";
+import { useFetchAPI } from "./hooks/useFetch";
 import { MovieList } from "./components/MovieList";
 import { movieAPIHeaders } from "./data/constants";
 import { mapMovieData } from "./util";
@@ -16,7 +16,7 @@ type RequestOptions = {
 
 function App() {
   const [keyword, setKeyword] = useState<string>("");
-  const { data, loading, error, fetchData } = useGetQuery();
+  const { data, loading, error, fetchData } = useFetchAPI();
 
   const options: RequestOptions = {
     method: "GET",

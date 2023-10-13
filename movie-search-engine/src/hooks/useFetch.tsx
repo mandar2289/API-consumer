@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ApiResponse, Detail } from "../Type/type";
 
-export const useGetQuery = () => {
+export const useFetchAPI = () => {
   const [data, setData] = useState<ApiResponse<Detail>>({ results: [] });
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);

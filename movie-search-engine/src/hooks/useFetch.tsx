@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { ApiResponse, Detail } from "../Type/type";
 
 export const useFetchAPI = () => {
@@ -6,21 +6,21 @@ export const useFetchAPI = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
-  const fetchData = async (url: string, options: object) => {
+  const fetchData = useCallback(async (url: string, options: object) => {
     try {
-      setLoading(true); // set loading to true to indicate that the data is being fetched
+      setLoading(true);
 
       const response = await fetch(url, options);
       const json: ApiResponse<Detail> = await response.json();
 
-      setData(json); // shape the data to our model
+      setData(json);
 
-      setLoading(false); // set loading to false to indicate that the api call has ended
+      setLoading(false);
     } catch (error: any) {
       setError(error.message);
-      setLoading(false); // set loading to false to indicate that the api call has ended
+      setLoading(false);
     }
-  };
+  }, []);
 
   return { data, loading, error, fetchData };
 };

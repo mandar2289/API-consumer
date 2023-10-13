@@ -6,13 +6,10 @@ export type MovieDetail = {
 };
 
 export interface Movie {
-  // Define the properties and their types for the movie object
   results: MovieDetail;
 }
 
-export interface Error {
-  // Define the properties and their types for the error object
-}
+export interface Error {}
 
 export interface MovieListProps {
   movieData: MovieDetail[];
@@ -22,16 +19,15 @@ export interface ApiResponse<T> {
   results: T[];
 }
 
+export interface MovieDetailResponse<T> {
+  
+}
+
 export interface Detail {
   id: string;
-  titleType: {
-    text: string;
-  };
-  titleText: {
-    text: string;
-  };
-  primaryImage: {
+  titleType: string;
+  title: string;
+  image: {
     url: string;
   };
-  // ... other properties if there are more in the object
 }

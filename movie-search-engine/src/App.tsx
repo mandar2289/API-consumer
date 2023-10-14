@@ -8,7 +8,7 @@ import "./App.css";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/movies",
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
@@ -17,6 +17,7 @@ const router = createBrowserRouter([
     ],
   },
 ]);
+
 function App() {
   return <RouterProvider router={router} />;
 }

@@ -4,11 +4,10 @@ import "./root.css";
 export const RootLayout = () => {
   return (
     <>
-      <h2 className="app-header">FilmHunt by Mandar</h2>
+      <Link to="/movies" className="app-header">
+        <h2>FilmHunt</h2>
+      </Link>
       <main>
-        <Link to="/movies" className="link-style">
-          Explore Movies and Series
-        </Link>
         <Outlet />
       </main>
     </>

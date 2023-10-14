@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+// import { Link } from "react-router-dom";
 import { useFetchAPI } from "../hooks/useFetch";
 import { MovieList } from "../components/MovieList";
 import { options } from "../data/constants";
@@ -12,6 +13,8 @@ export const Home: React.FC = () => {
 
   const { data, loading, error, fetchData } = useFetchAPI();
 
+  const storedKeyword: string | null = sessionStorage.getItem("searchKeyword");
+
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword((prevKeyword) => e.target.value);
   };
@@ -20,12 +23,40 @@ export const Home: React.FC = () => {
     const url = `https://online-movie-database.p.rapidapi.com/title/find?q=${keyword}`;
     fetchData(url, options);
     setShowMovieList(true);
+    sessionStorage.setItem("searchKeyword", keyword);
   };
+
+  useEffect(() => {
+    if (storedKeyword) {
+      setKeyword(storedKeyword);
+      const url = `https://online-movie-database.p.rapidapi.com/title/find?q=${storedKeyword}`;
+      fetchData(url, options);
+      setShowMovieList(true);
+    }
+
+    window.addEventListener("beforeunload", () => {
+      sessionStorage.removeItem("searchKeyword");
+    });
+
+    // Clean up the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("beforeunload", () => {
+        sessionStorage.removeItem("searchKeyword");
+      });
+    };
+  }, [storedKeyword, fetchData]);
 
   return (
     <>
-      <input type="text" onChange={handleTextChange} value={keyword} placeholder="Enter a keyword..."></input>
-      <button onClick={handleSubmit} disabled={!keyword}>
+      <label className="search-label">Explore Movies and Series</label>
+      <input
+        className="movie-search-input"
+        type="text"
+        onChange={handleTextChange}
+        value={keyword}
+        placeholder="Enter a keyword..."
+      ></input>
+      <button className="submit-button" onClick={handleSubmit} disabled={!keyword}>
         Submit
       </button>
       {loading ? <h2>Loading...</h2> : null}

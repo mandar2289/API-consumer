@@ -5,7 +5,6 @@ export const mapMovieData = (movieRes: ApiResponse<Detail>): MovieDetail[] => {
 
   const mappedResult: MovieDetail[] = results
     .map((detail) => {
-      // Access properties with optional chaining and provide default values if properties are not available
       const id = detail?.id ?? "";
       const titleType = detail?.titleType ?? "";
       const titleText = detail?.title ?? "";

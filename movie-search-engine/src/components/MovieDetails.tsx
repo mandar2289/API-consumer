@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { options } from "../data/constants";
 import "./movieDetails.css";
 
@@ -56,6 +56,9 @@ export const MovieDetails: React.FC = () => {
 
   return (
     <div className="movie-details-container">
+      <Link to=".." className="back-button">
+        Back
+      </Link>
       <img className="movie-details-image" src={movieDetailData.image.url} alt={movieDetailData.title} />
       <h2 className="movie-details-title">{movieDetailData.title}</h2>
       <div className="movie-details-info">

@@ -1,20 +1,25 @@
 .app-header {
-    color: rgb(127, 120, 201);
-    padding: 10px 0;
-    text-align: center;
-    cursor: default;
-  }
-  
+  padding: 10px 0;
+  text-align: center;
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.app-header:hover {
+  color: #0056b3;
+}
+
 .link-style {
-  color: #007bff; /* Set the link color */
-  text-decoration: none; /* Remove the underline */
-  font-weight: bold; /* Make the link text bold */
-  padding: 20px; /* Add some space above the link */
-  display: block; /* Make the link a block element */
-  transition: color 0.3s ease; /* Add a smooth color transition on hover */
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 20px;
+  display: block;
+  transition: color 0.3s ease;
 }
 .link-style:hover,
 .link-style:active {
-  color: #0056b3; /* Change the link color on hover */
+  color: #0056b3;
   text-decoration: underline;
 }

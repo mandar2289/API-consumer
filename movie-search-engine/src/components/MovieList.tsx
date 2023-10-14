@@ -10,15 +10,19 @@ export const MovieList: React.FC<MovieListProps> = ({ movieData }) => {
       <>
         {movieData?.length > 0 ? (
           movieData.map((movie: MovieListRes) => (
-            <div key={movie.id} className="movie-item">
+            <div key={movie.id} className="movie-item" data-testid="movie-item">
               <img src={movie?.image} alt={movie?.title} />
-              <Link to={`/movies/${extractId(movie.id)}`} className="movie-title">
+              <Link
+                to={`/movies/${extractId(movie.id)}`}
+                className="movie-title"
+                data-testid={`movie-link-${movie.id}`}
+              >
                 {movie?.title}
               </Link>
             </div>
           ))
         ) : (
-          <p>No records found, try other keyword</p>
+          <p data-testid="no-records-message">No records found, try other keyword</p>
         )}
       </>
     </div>

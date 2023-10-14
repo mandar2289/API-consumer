@@ -26,8 +26,14 @@ export const Home: React.FC = () => {
     sessionStorage.setItem("searchKeyword", keyword);
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && keyword) {
+      handleSubmit();
+    }
+  };
+
   useEffect(() => {
-    if (storedKeyword) {
+    if (storedKeyword && !keyword) {
       setKeyword(storedKeyword);
       const url = `https://online-movie-database.p.rapidapi.com/title/find?q=${storedKeyword}`;
       fetchData(url, options);
@@ -38,13 +44,12 @@ export const Home: React.FC = () => {
       sessionStorage.removeItem("searchKeyword");
     });
 
-    // Clean up the event listener when the component is unmounted
     return () => {
       window.removeEventListener("beforeunload", () => {
         sessionStorage.removeItem("searchKeyword");
       });
     };
-  }, [storedKeyword, fetchData]);
+  }, [storedKeyword, fetchData, keyword]);
 
   return (
     <>
@@ -55,6 +60,7 @@ export const Home: React.FC = () => {
         onChange={handleTextChange}
         value={keyword}
         placeholder="Enter a keyword..."
+        onKeyPress={handleKeyPress}
       ></input>
       <button className="submit-button" onClick={handleSubmit} disabled={!keyword}>
         Submit

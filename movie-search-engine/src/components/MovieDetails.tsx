@@ -1,46 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { options } from "../data/constants";
+import { options, constantText } from "../data/constants";
+import { MovieDetailsResponse } from "../Type/type";
+import { useFetchAPI } from "../hooks/useFetch";
 import "./movieDetails.css";
 
-interface MovieDetail {
-  title: string;
-  image: {
-    url: string;
-  };
-  numberOfEpisodes: number;
-  seriesStartYear: number;
-  titleType: string;
-}
-
+const { NOT_AVAILABLE } = constantText;
 export const MovieDetails: React.FC = () => {
   const { movieId } = useParams<{ movieId: string }>();
-
-  const [movieDetailData, setMovieDetailData] = useState<MovieDetail | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<string | null>(null);
-
-  const url = `https://online-movie-database.p.rapidapi.com/title/get-details?tconst=${movieId}`;
+  const { data: movieDetailData, loading, error, fetchData } = useFetchAPI<MovieDetailsResponse>();
 
   useEffect(() => {
-    const getMovieDetails = async (url: string, options: object) => {
-      try {
-        const response = await fetch(url, options);
-        if (response.ok) {
-          const json: MovieDetail = await response.json();
-          setMovieDetailData(json);
-        } else {
-          throw new Error("Failed to fetch movie details");
-        }
-        setLoading(false);
-      } catch (error: any) {
-        setError(error.message);
-        setLoading(false);
-      }
-    };
-
-    getMovieDetails(url, options);
-  }, [movieId, url]);
+    if (movieId) {
+      const url = `https://online-movie-database.p.rapidapi.com/title/get-details?tconst=${movieId}`;
+      fetchData(url, options);
+    }
+  }, [movieId, fetchData]);
 
   if (loading) {
     return <div className="loading-message">Loading...</div>;
@@ -57,14 +32,21 @@ export const MovieDetails: React.FC = () => {
   return (
     <div className="movie-details-container">
       <Link to=".." className="back-button">
-        Back
+        Back to explore
       </Link>
       <img className="movie-details-image" src={movieDetailData.image.url} alt={movieDetailData.title} />
       <h2 className="movie-details-title">{movieDetailData.title}</h2>
       <div className="movie-details-info">
         <h3>Type: {movieDetailData.titleType}</h3>
         <h3>Start Year: {movieDetailData.seriesStartYear}</h3>
-        <h3>Number of Episodes: {movieDetailData.numberOfEpisodes}</h3>
+        <h3>End Year: {movieDetailData.seriesEndYear || NOT_AVAILABLE}</h3>
+        <h3>Number of Episodes: {movieDetailData.numberOfEpisodes || NOT_AVAILABLE}</h3>
+        <h3>
+          Running Time:
+          {movieDetailData.runningTimeInMinutes
+            ? `${movieDetailData.runningTimeInMinutes} minutes`
+            : NOT_AVAILABLE}
+        </h3>
       </div>
     </div>
   );

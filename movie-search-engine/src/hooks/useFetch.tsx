@@ -1,8 +1,8 @@
 import { useState, useCallback } from "react";
-import { ApiResponse, Detail } from "../Type/type";
+// import { ApiResponse, Detail } from "../Type/type";
 
-export const useFetchAPI = () => {
-  const [data, setData] = useState<ApiResponse<Detail>>({ results: [] });
+export const useFetchAPI = <T,>() => {
+  const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -11,7 +11,7 @@ export const useFetchAPI = () => {
       setLoading(true);
 
       const response = await fetch(url, options);
-      const json: ApiResponse<Detail> = await response.json();
+      const json: T = await response.json();
 
       setData(json);
 

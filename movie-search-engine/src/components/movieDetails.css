@@ -1,51 +1,63 @@
 .movie-details-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 20px;
   background-color: #f9f9f9;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.movie-details-image {
-  width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  object-position: center;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
 }
 
 .movie-details-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 28px;
+  /* font-weight: bold; */
+  margin-bottom: 22px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  /* color: #007bff; */
+}
+
+.movie-details-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.movie-details-image {
+  width: 300px;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
 .movie-details-info {
   font-size: 16px;
+  text-align: left;
+  margin-right: 10px;
+}
+
+.movie-details-info label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
   margin-bottom: 10px;
+  color: #333;
 }
-
-.loading-message {
-  font-size: 20px;
-  text-align: center;
-  margin-top: 50px;
+.movie-details-info span {
+  /* display: block; */
+  /* font-size: 16px; */
+  font-weight: normal;
+  /* margin-bottom: 10px; */
+  /* color: #333; */
 }
-
-.error-message {
-  font-size: 20px;
-  color: red;
-  text-align: center;
-  margin-top: 50px;
-}
-
 .back-button {
-  text-decoration: none; /* Remove underline from the link text */
-  font-size: 16px; /* Button text size */
-  color: #007bff; /* Link text color */
-  margin-bottom: 20px; /* Add margin at the bottom for spacing */
-  display: block; /* Make it a block element to occupy full width */
+  text-decoration: none;
+  font-size: 16px;
+  color: #007bff;
+  margin-top: 20px;
+  display: block;
 }
 
 .back-button:hover {

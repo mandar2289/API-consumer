@@ -18,7 +18,11 @@ export const MovieDetails: React.FC = () => {
   }, [movieId, fetchData]);
 
   if (loading) {
-    return <div className="loading-message">Loading...</div>;
+    return (
+      <div className="loading-spinner">
+        <div className="spinner"></div>
+      </div>
+    );
   }
 
   if (error) {
@@ -31,25 +35,37 @@ export const MovieDetails: React.FC = () => {
 
   return (
     <div className="movie-details-container">
+      <h2 className="movie-details-title">{movieDetailData.title}</h2>
+      <div className="movie-details-content">
+        <div className="movie-details-info">
+          <label>
+            Type: <span>{movieDetailData.titleType}</span>
+          </label>
+          <label>
+            Start Year: <span>{movieDetailData.seriesStartYear || NOT_AVAILABLE}</span>
+          </label>
+          <label>
+            End Year: <span>{movieDetailData.seriesEndYear || NOT_AVAILABLE}</span>
+          </label>
+          {movieDetailData.titleType.toLowerCase().indexOf("series") !== -1 && (
+            <label>
+              Number of Episodes: <span>{movieDetailData.numberOfEpisodes || NOT_AVAILABLE}</span>
+            </label>
+          )}
+          <label>
+            Running Time:
+            <span>
+              {movieDetailData.runningTimeInMinutes
+                ? ` ${movieDetailData.runningTimeInMinutes} minutes`
+                : NOT_AVAILABLE}
+            </span>
+          </label>
+        </div>
+        <img className="movie-details-image" src={movieDetailData.image.url} alt={movieDetailData.title} />
+      </div>
       <Link to=".." relative="path" className="back-button">
         Back to explore
       </Link>
-      <img className="movie-details-image" src={movieDetailData.image.url} alt={movieDetailData.title} />
-      <h2 className="movie-details-title">{movieDetailData.title}</h2>
-      <div className="movie-details-info">
-        <h3>Type: {movieDetailData.titleType}</h3>
-        <h3>Start Year: {movieDetailData.seriesStartYear || NOT_AVAILABLE}</h3>
-        <h3>End Year: {movieDetailData.seriesEndYear || NOT_AVAILABLE}</h3>
-        {movieDetailData.titleType.toLowerCase().indexOf("series") !== -1 && (
-          <h3>Number of Episodes: {movieDetailData.numberOfEpisodes || NOT_AVAILABLE}</h3>
-        )}
-        <h3>
-          Running Time:
-          {movieDetailData.runningTimeInMinutes
-            ? `${movieDetailData.runningTimeInMinutes} minutes`
-            : NOT_AVAILABLE}
-        </h3>
-      </div>
     </div>
   );
 };

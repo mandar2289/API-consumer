@@ -1,10 +1,10 @@
 import { MovieListRes, ApiResponse, Detail } from "../Type/type";
 
 export const mapMovieData = (movieRes: ApiResponse<Detail> | {}): MovieListRes[] => {
-  const results = (movieRes as ApiResponse<Detail>).results || [];
+  const results = (movieRes as ApiResponse<Detail>)?.results || [];
 
   const mappedResult: MovieListRes[] = results
-    .map((detail) => {
+    ?.map((detail) => {
       const id = detail?.id ?? "";
       const titleType = detail?.titleType ?? "";
       const titleText = detail?.title ?? "";
@@ -17,7 +17,7 @@ export const mapMovieData = (movieRes: ApiResponse<Detail> | {}): MovieListRes[]
         image: primaryImage,
       };
     })
-    .filter((detail: MovieListRes) => detail.title && detail.image && detail.type);
+    ?.filter((detail: MovieListRes) => detail.title && detail.image && detail.type);
 
   return mappedResult;
 };

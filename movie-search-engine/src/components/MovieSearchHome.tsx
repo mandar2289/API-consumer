@@ -20,7 +20,7 @@ export const MovieSearchHome: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    const url = `${baseURL}/find?q=${keyword || storedKeyword}`;
+    const url = `${baseURL}/find?q=${keyword}`;
     fetchData(url, options);
     setShowMovieList(true);
     keyword && sessionStorage.setItem("searchKeyword", keyword);
@@ -37,6 +37,7 @@ export const MovieSearchHome: React.FC = () => {
       const url = `https://online-movie-database.p.rapidapi.com/title/find?q=${storedKeyword}`;
       fetchData(url, options);
       setShowMovieList(true);
+      setKeyword(storedKeyword);
     }
 
     window.addEventListener("beforeunload", () => {
@@ -48,7 +49,7 @@ export const MovieSearchHome: React.FC = () => {
         sessionStorage.removeItem("searchKeyword");
       });
     };
-  }, [storedKeyword, fetchData, keyword]);
+  }, [storedKeyword, keyword, fetchData]);
 
   return (
     <>
@@ -57,14 +58,18 @@ export const MovieSearchHome: React.FC = () => {
         className="movie-search-input"
         type="text"
         onChange={handleTextChange}
-        value={keyword || storedKeyword || ""}
+        value={keyword}
         placeholder="Enter a keyword..."
         onKeyPress={handleKeyPress}
       ></input>
-      <button className="submit-button" onClick={handleSubmit} disabled={!keyword && !storedKeyword}>
+      <button className="submit-button" onClick={handleSubmit} disabled={!keyword}>
         Submit
       </button>
-      {loading ? <h2>Loading...</h2> : null}
+      {loading && (
+        <div className="loading-spinner">
+          <div className="spinner"></div>
+        </div>
+      )}
       {error ? <h2>Error: {error}</h2> : null}
       {data && !loading && !error && showMovieList ? <MovieList movieData={mapMovieData(data)} /> : null}
     </>

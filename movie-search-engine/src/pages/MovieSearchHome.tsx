@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import { Link } from "react-router-dom";
 import { useFetchAPI } from "../hooks/useFetch";
-import { MovieList } from "./MovieList";
+import { MovieList } from "../components/MovieList";
 import { options, baseURL } from "../data/constants";
 import { mapMovieData } from "../util";
 
@@ -27,7 +26,7 @@ export const MovieSearchHome: React.FC = () => {
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && (keyword || storedKeyword)) {
+    if (e.key === "Enter" && keyword) {
       handleSubmit();
     }
   };
@@ -49,7 +48,8 @@ export const MovieSearchHome: React.FC = () => {
         sessionStorage.removeItem("searchKeyword");
       });
     };
-  }, [storedKeyword, keyword, fetchData]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [storedKeyword, fetchData]);
 
   return (
     <>

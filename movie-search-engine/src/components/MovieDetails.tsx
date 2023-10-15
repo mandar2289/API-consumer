@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { options, constantText } from "../data/constants";
+import { options, constantText, baseURL } from "../data/constants";
 import { MovieDetailsResponse } from "../Type/type";
 import { useFetchAPI } from "../hooks/useFetch";
 import "./movieDetails.css";
 
 const { NOT_AVAILABLE } = constantText;
+
 export const MovieDetails: React.FC = () => {
   const { movieId } = useParams<{ movieId: string }>();
   const { data: movieDetailData, loading, error, fetchData } = useFetchAPI<MovieDetailsResponse>();
 
   useEffect(() => {
     if (movieId) {
-      const url = `https://online-movie-database.p.rapidapi.com/title/get-details?tconst=${movieId}`;
+      const url = `${baseURL}/get-details?tconst=${movieId}`;
       fetchData(url, options);
     }
   }, [movieId, fetchData]);

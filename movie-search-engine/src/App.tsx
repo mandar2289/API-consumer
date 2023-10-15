@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import { MovieSearchHome } from "./components/MovieSearchHome";
+import { MovieSearchHome } from "./pages/MovieSearchHome";
 import { RootLayout } from "./components/Root";
 import { ErrorPage } from "./pages/Error";
 import { MovieDetails } from "./components/MovieDetails";

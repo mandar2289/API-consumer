@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
-import { Home } from "./components/Home";
+import { MovieSearchHome } from "./components/MovieSearchHome";
 import { RootLayout } from "./components/Root";
 import { ErrorPage } from "./pages/Error";
 import { MovieDetails } from "./components/MovieDetails";
@@ -13,7 +13,7 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/movies", element: <Home /> },
+      { path: "/movies", element: <MovieSearchHome /> },
       { path: "/movies/:movieId", element: <MovieDetails /> },
     ],
   },

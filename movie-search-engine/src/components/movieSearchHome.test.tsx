@@ -1,14 +1,14 @@
 import React from "react";
 import { render, waitFor, screen } from "@testing-library/react";
-import { Home } from "./Home";
+import { MovieSearchHome } from "./MovieSearchHome";
 
 describe("Home component", () => {
   it("renders without errors", () => {
-    render(<Home />);
+    render(<MovieSearchHome />);
   });
 
   it("check if home is rendered correctly!", async () => {
-    render(<Home />);
+    render(<MovieSearchHome />);
 
     await waitFor(() => {
       expect(screen.getByText("Explore Movies and Series")).toBeInTheDocument();
@@ -16,7 +16,7 @@ describe("Home component", () => {
   });
 
   it("Disables submit button without a keyword", async () => {
-    render(<Home />);
+    render(<MovieSearchHome />);
 
     const submitButton = screen.getByText("Submit");
 

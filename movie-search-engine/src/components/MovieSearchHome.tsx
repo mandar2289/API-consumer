@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import { useFetchAPI } from "../hooks/useFetch";
-import { MovieList } from "../components/MovieList";
+import { MovieList } from "./MovieList";
 import { options } from "../data/constants";
 import { mapMovieData } from "../util";
 
-import "./home.css";
+import "./movieSearchHome.css";
 
-export const Home: React.FC = () => {
+export const MovieSearchHome: React.FC = () => {
   const [keyword, setKeyword] = useState<string>("");
   const [showMovieList, setShowMovieList] = useState<boolean>(false);
 

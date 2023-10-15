@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 // import { Link } from "react-router-dom";
 import { useFetchAPI } from "../hooks/useFetch";
 import { MovieList } from "./MovieList";
-import { options } from "../data/constants";
+import { options, baseURL } from "../data/constants";
 import { mapMovieData } from "../util";
 
 import "./movieSearchHome.css";
@@ -20,21 +20,20 @@ export const MovieSearchHome: React.FC = () => {
   };
 
   const handleSubmit = () => {
-    const url = `https://online-movie-database.p.rapidapi.com/title/find?q=${keyword}`;
+    const url = `${baseURL}/find?q=${keyword || storedKeyword}`;
     fetchData(url, options);
     setShowMovieList(true);
-    sessionStorage.setItem("searchKeyword", keyword);
+    keyword && sessionStorage.setItem("searchKeyword", keyword);
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter" && keyword) {
+    if (e.key === "Enter" && (keyword || storedKeyword)) {
       handleSubmit();
     }
   };
 
   useEffect(() => {
     if (storedKeyword && !keyword) {
-      setKeyword(storedKeyword);
       const url = `https://online-movie-database.p.rapidapi.com/title/find?q=${storedKeyword}`;
       fetchData(url, options);
       setShowMovieList(true);
@@ -58,11 +57,11 @@ export const MovieSearchHome: React.FC = () => {
         className="movie-search-input"
         type="text"
         onChange={handleTextChange}
-        value={keyword}
+        value={keyword || storedKeyword || ""}
         placeholder="Enter a keyword..."
         onKeyPress={handleKeyPress}
       ></input>
-      <button className="submit-button" onClick={handleSubmit} disabled={!keyword}>
+      <button className="submit-button" onClick={handleSubmit} disabled={!keyword && !storedKeyword}>
         Submit
       </button>
       {loading ? <h2>Loading...</h2> : null}

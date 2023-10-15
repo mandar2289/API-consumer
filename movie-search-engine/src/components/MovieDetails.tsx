@@ -31,16 +31,18 @@ export const MovieDetails: React.FC = () => {
 
   return (
     <div className="movie-details-container">
-      <Link to=".." className="back-button">
+      <Link to=".." relative="path" className="back-button">
         Back to explore
       </Link>
       <img className="movie-details-image" src={movieDetailData.image.url} alt={movieDetailData.title} />
       <h2 className="movie-details-title">{movieDetailData.title}</h2>
       <div className="movie-details-info">
         <h3>Type: {movieDetailData.titleType}</h3>
-        <h3>Start Year: {movieDetailData.seriesStartYear}</h3>
+        <h3>Start Year: {movieDetailData.seriesStartYear || NOT_AVAILABLE}</h3>
         <h3>End Year: {movieDetailData.seriesEndYear || NOT_AVAILABLE}</h3>
-        <h3>Number of Episodes: {movieDetailData.numberOfEpisodes || NOT_AVAILABLE}</h3>
+        {movieDetailData.titleType.toLowerCase().indexOf("series") !== -1 && (
+          <h3>Number of Episodes: {movieDetailData.numberOfEpisodes || NOT_AVAILABLE}</h3>
+        )}
         <h3>
           Running Time:
           {movieDetailData.runningTimeInMinutes

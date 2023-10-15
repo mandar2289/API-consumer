@@ -8,8 +8,19 @@
   gap: 10px;
 }
 
+@media (max-width: 768px) {
+  .movie-list-container {
+    grid-template-columns: auto auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .movie-list-container {
+    grid-template-columns: auto;
+  }
+}
+
 .movie-item {
-  /* margin-bottom: 20px; */
   padding: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
@@ -32,4 +43,8 @@
 
 .movie-title {
   font-size: 16px;
+  text-decoration: none;
+}
+.movie-title:hover {
+  text-decoration: underline;
 }

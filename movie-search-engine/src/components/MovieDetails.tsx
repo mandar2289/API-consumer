@@ -19,7 +19,7 @@ export const MovieDetails: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="loading-spinner">
+      <div className="loading-spinner detail-spinner">
         <div className="spinner"></div>
       </div>
     );

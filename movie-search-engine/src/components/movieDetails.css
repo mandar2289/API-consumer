@@ -11,11 +11,9 @@
 
 .movie-details-title {
   font-size: 28px;
-  /* font-weight: bold; */
   margin-bottom: 22px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  /* color: #007bff; */
 }
 
 .movie-details-content {
@@ -46,11 +44,7 @@
   color: #333;
 }
 .movie-details-info span {
-  /* display: block; */
-  /* font-size: 16px; */
   font-weight: normal;
-  /* margin-bottom: 10px; */
-  /* color: #333; */
 }
 .back-button {
   text-decoration: none;
@@ -62,4 +56,14 @@
 
 .back-button:hover {
   text-decoration: underline;
+}
+
+.detail-spinner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw; /* 100% of the viewport width */
+  height: 100vh; /* 100% of the viewport height */
+  background: rgba(0, 0, 0, 0.1); /* Semi-transparent background */
+  z-index: 9999;
 }

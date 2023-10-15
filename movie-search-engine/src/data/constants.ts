@@ -4,7 +4,7 @@ export const constantText = {
 
 export const baseURL = "https://online-movie-database.p.rapidapi.com/title";
 export const movieAPIHeaders = {
-  "X-RapidAPI-Key": "750fc05705msh3207e8b6a871ca8p12d574jsn9184506d1edf",
+  "X-RapidAPI-Key": "f355218143mshc83adada07fd7b2p144e23jsnd94e50c6193c",
   "X-RapidAPI-Host": "online-movie-database.p.rapidapi.com",
 };
 

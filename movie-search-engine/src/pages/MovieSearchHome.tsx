@@ -49,7 +49,7 @@ export const MovieSearchHome: React.FC = () => {
       });
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [storedKeyword, fetchData]);
+  }, []);
 
   return (
     <>

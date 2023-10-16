@@ -6,16 +6,16 @@ Welcome to the Movie Search Engine project! This application, built using Create
 
 To get started with the project, follow these simple steps:
 
-### `git clone <(https://github.com/mandar2289/API-consumer)>`
-### `cd movie-search-engine`
+#### `git clone https://github.com/mandar2289/API-consumer`
+#### `cd movie-search-engine`
 
 ## Install Dependencies
 
-### `npm install`
+#### `npm install`
 
 ## Run the Application
 
-### `npm start`
+#### `npm start`
 
 This command launches the app in development mode. Open http://localhost:3000/movies to view it in your browser. The page will automatically reload if you make any edits, and you can see lint errors in the console.
 
@@ -23,11 +23,11 @@ This command launches the app in development mode. Open http://localhost:3000/mo
 
 To run tests for the project, use the following command, Launches the test runner in the interactive watch mode.
 
-### `npm test`
+#### `npm test`
 
 Launches the test runner in the interactive watch mode.
 
-### `npm run build`
+#### `npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -37,7 +37,7 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+#### `npm run eject`
 
 **Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 

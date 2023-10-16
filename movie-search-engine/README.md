@@ -1,23 +1,31 @@
-# Getting Started with Create React App
+# Movie search engine to explore movies and series
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to the Movie Search Engine project! This application, built using Create React App, allows you to search for your favorite movies effortlessly.
 
-## Available Scripts
+## Getting Started
 
-In the project directory, you can run:
+To get started with the project, follow these simple steps:
+
+### `git clone <repository-url>`
+### `cd movie-search-engine`
+
+## Install Dependencies
+
+### `npm install`
+
+## Run the Application
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+This command launches the app in development mode. Open http://localhost:3000/movies to view it in your browser. The page will automatically reload if you make any edits, and you can see lint errors in the console.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Testing
+
+To run tests for the project, use the following command, Launches the test runner in the interactive watch mode.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `npm run build`
 
@@ -39,8 +47,4 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+Thank you for using the Movie Search Engine! If you have any questions or need further assistance, feel free to reach out. Happy coding!

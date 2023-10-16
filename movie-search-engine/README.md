@@ -6,7 +6,7 @@ Welcome to the Movie Search Engine project! This application, built using Create
 
 To get started with the project, follow these simple steps:
 
-### `git clone <repository-url>`
+### `git clone <(https://github.com/mandar2289/API-consumer)>`
 ### `cd movie-search-engine`
 
 ## Install Dependencies
